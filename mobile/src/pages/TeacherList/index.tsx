@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Picker, Platform } from 'react-native';
 import { ScrollView, BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
@@ -13,13 +14,26 @@ import styles from './styles';
 
 function TeacherList(){
 
+  const [show, setShow] = useState(false);
+
+  const defaultSubjects = [ 
+    "Artes", "Biologia", "Educação Física", "Espanhol", "Filosofia",
+    "Física", "Geografia", "História", "Inglês", "Literatura",
+    "Matemática", "Português", "Química", "Sociologia"
+  ];
+
+  const defaultWeekDays = [
+    "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", 
+    "Quinta-feira", "Sexta-feira", "Sábado"
+  ];
+
   const [ isFilterVisible, setIsFilterVisible ] = useState(false);
   const [ favorites, setFavorites ] = useState<number[]>([]);
   const [ teachers, setTeachers ] = useState([]);
 
   const [ subject, setSubject ] = useState('');
   const [ week_day, setWeekDay ] = useState('');
-  const [ time, setTime ] = useState('');
+  const [ time, setTime ] = useState('Qual o horário?');
 
   function loadFavorites(){
     AsyncStorage.getItem('favorites').then(response => {
@@ -46,8 +60,25 @@ function TeacherList(){
     });
 
     toggleFilterVisibility();
-    console.log(response.data);
     setTeachers(response.data);
+  }
+
+  function formatTime(time: Number){
+    let formatedTime = String(time);
+    if (time < 10){
+      formatedTime = '0' + time;
+    }
+    return formatedTime;
+  }
+
+  const handleTimeChange = (event: Object, selectedDate: Date | undefined) => {
+    setShow(Platform.OS === 'ios');
+    if (selectedDate){
+      const formatedHours = formatTime(selectedDate.getHours());
+      const formatedMinutes = formatTime(selectedDate.getMinutes());
+      const formatedTime = formatedHours + ':' + formatedMinutes;
+      setTime(formatedTime);
+    }
   }
 
   return (
@@ -56,42 +87,96 @@ function TeacherList(){
       title="Proffys disponíveis"
       headerRight={(
         <BorderlessButton
-          onPress={toggleFilterVisibility}>
-          <Feather name="filter" size={20} color="#FFF"/>
+          onPress={toggleFilterVisibility}
+          style={{
+            height: 50, 
+            width: 50, 
+            alignItems: 'center', 
+            justifyContent: 'center'
+          }}
+        >
+          <Feather name="filter" size={20} color="#04D361"/>
         </BorderlessButton>
       )}
       >
         { isFilterVisible && (<View style={styles.searchForm}>
           <Text style={styles.label}>Matéria</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Qual a matéria?"
-            placeholderTextColor="#C1BCCC"
-            value={subject}
-            onChangeText={text => setSubject(text)}
-          />
+          <View style={{borderRadius: 8, overflow: 'hidden'}}>
+            <Picker
+              style={{ 
+                backgroundColor: 'white', 
+                width: '100%', 
+                color: '#C1BCCC',
+                
+              }}
+              selectedValue={subject}
+              onValueChange={(itemValue) => setSubject(itemValue)}
+            >
+              <Picker.Item value="" label="Qual a matéria?" />
+              {defaultSubjects.map((subjectItem, index) => {
+                return (
+                  <Picker.Item 
+                    key={index} 
+                    value={subjectItem} 
+                    label={subjectItem} 
+                  />
+                );
+              })}
+            </Picker>
+          </View> 
 
           <View style={styles.inputGroup}>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Dia da semana</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="Qual o dia?"
-                placeholderTextColor="#C1BCCC"
-                value={week_day}
-                onChangeText={text => setWeekDay(text)}
-              />
+              <View style={{borderRadius: 8, overflow: 'hidden', marginTop: 5}}>
+                <Picker
+                  prompt="Qual o dia?"
+                  style={{ 
+                    backgroundColor: 'white', 
+                    width: '100%', 
+                    color: '#C1BCCC',
+                    height: 52,
+                  }}
+                  selectedValue={week_day}
+                  onValueChange={dayItem => setWeekDay(dayItem)}
+                >
+                  <Picker.Item value="" label="Qual o dia?"/>
+                  {defaultWeekDays.map((weekDay, index) => {
+                    return (
+                      <Picker.Item 
+                        key={weekDay} 
+                        value={String(index)} 
+                        label={weekDay} 
+                      />
+                    );
+                  })}
+                </Picker>
+              </View>
             </View>
 
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Horário</Text>
-              <TextInput
+              <RectButton
                 style={styles.input}
-                placeholder="Qual horário?"
-                placeholderTextColor="#C1BCCC"
-                value={time}
-                onChangeText={text => setTime(text)}
-              />
+                onPress={() => setShow(true)}
+              >
+                <Text style={{ 
+                  color: '#C1BCCC', 
+                  fontSize: 15
+                }}>
+                  {time}
+                </Text>
+              </RectButton>
+
+              {show && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={new Date()}
+                  mode="time"
+                  display="clock"
+                  onChange={handleTimeChange}
+                />
+              )}
             </View>
           </View>
           <RectButton 

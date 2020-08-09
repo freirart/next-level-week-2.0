@@ -17,11 +17,13 @@ const styles = StyleSheet.create({
   label: {
     color: '#D4C2FF',
     fontFamily:'Poppins_400Regular',
+    marginBottom: -3,
   },
 
   inputGroup: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 10,
   },
 
   inputBlock: {

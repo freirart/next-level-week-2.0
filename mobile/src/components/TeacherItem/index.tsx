@@ -57,6 +57,14 @@ const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({ teacher, favor
     await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray));
   }
 
+  function formatMoney(money: Number){
+    let moneyString = String(money);
+
+    moneyString.indexOf('.') === -1 ? moneyString += ',00' : '';
+
+    return moneyString;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
@@ -77,7 +85,7 @@ const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({ teacher, favor
       <View style={styles.footer}>
         <Text style={styles.price}>
           Preço/hora {'   '}
-          <Text style={styles.priceValue}>R$ {teacher.price}</Text>
+          <Text style={styles.priceValue}>R$ {formatMoney(teacher.price)}</Text>
         </Text>
 
         <View style={styles.buttonsContainer}>
