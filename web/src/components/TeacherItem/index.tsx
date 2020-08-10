@@ -27,6 +27,10 @@ const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({ teacher }) => 
     });
   }
 
+  const teacherPriceString = String(teacher.price).indexOf('.') !== -1 
+    ? teacher.price
+    : teacher.price + ',00';
+
   return (
     <article className="teacher-item">
           <header>
@@ -42,8 +46,8 @@ const TeacherItem: React.FunctionComponent<TeacherItemProps> = ({ teacher }) => 
           </p>
 
           <footer>
-            <p>Preço/hora<strong>R$ {teacher.price}</strong></p>
-            <a target="_blank" onClick={createNewConnection} href={`https://wa.me/${teacher.whatsapp}`}>
+            <p>Preço/hora<strong>R$ {teacherPriceString }</strong></p>
+            <a target="_blank" rel="noopener noreferrer" onClick={createNewConnection} href={`https://wa.me/${teacher.whatsapp}`}>
               <img src={whatsappIcon} alt="Whatsapp" /> Entrar em contato
             </a>
           </footer>

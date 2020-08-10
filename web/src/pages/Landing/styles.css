@@ -21,13 +21,12 @@
 
 .logo-container h2{
   font-weight: 500;
-  font-size: 2.4rem;
+  font-size: 2rem;
   line-height: 4.6rem;
   margin-top: 0.8rem;
 }
 
 .hero-image {
-  margin-top: 10%;
   width: 100%;
 }
 
@@ -119,6 +118,7 @@
   }
 
   .hero-image {
+    margin-top: 5%;
     grid-area: hero;
     justify-self: end;
   }

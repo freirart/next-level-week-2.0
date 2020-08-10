@@ -43,6 +43,7 @@
   width: 100%;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 @media (min-width: 700px){

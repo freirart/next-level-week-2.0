@@ -57,7 +57,7 @@ function TeacherForm() {
       schedule: scheduleItems
     }).then(() => {
       alert('Cadastrado com sucesso!');
-      history.push('/');
+      history.push('register-success');
     }).catch(() => {
       alert('Erro ao cadastrar!');
     })
