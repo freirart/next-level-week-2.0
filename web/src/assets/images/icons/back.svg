@@ -1,11 +1,1 @@
-<svg width="49" height="32" viewBox="0 0 49 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
-<path d="M2 16H48" stroke="#BDA5F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.00098 21.001L0.999976 16L6.00098 10.999" stroke="#BDA5F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<clipPath id="clip0">
-<rect width="32" height="49" fill="white" transform="translate(49) rotate(90)"/>
-</clipPath>
-</defs>
-</svg>
+<svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48.5 11.5"><defs><style>.cls-1,.cls-3{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{stroke:#699dee;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style><clipPath id="clip-path" transform="translate(-0.2 -10.2)"><rect class="cls-1" width="49" height="32"/></clipPath></defs><title>back</title><g class="cls-2"><path class="cls-3" d="M2,16H48" transform="translate(-0.2 -10.2)"/><path class="cls-3" d="M6,21,1,16l5-5" transform="translate(-0.2 -10.2)"/></g></svg>

@@ -17,9 +17,10 @@
   background: var(--color-secondary);
   color: var(--color-button-text);
   border: 0;
+  padding: 0 15px;
   border-radius: 0.8rem;
   cursor: pointer;
-  font: 700 1.4rem Archivo;
+  font: 700 1.5rem Archivo;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -36,6 +37,14 @@
   width: 90%;
 }
 
+.default-item{
+  display: flex;
+  height: 150px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (min-width: 700px){
   #page-teacher-list{
     max-width: 100vw;
@@ -43,7 +52,7 @@
 
   #search-teachers{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 2fr 2fr 1fr 1fr;
     column-gap: 16px;
     position: absolute;
     bottom: -26px;

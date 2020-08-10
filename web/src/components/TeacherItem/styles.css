@@ -51,7 +51,7 @@
 }
 
 .teacher-item footer p strong {
-  color: var(--color-primary);
+  color: var(--color-primary-darker);
   font-size: 1.6rem;
   display: block;
 }
@@ -59,12 +59,12 @@
 .teacher-item footer a{
   width: 20rem;
   height: 5.6rem;
-  background: var(--color-secondary);
+  background: var(--color-text-title);
   color: var(--color-button-text);
   border: 0;
   border-radius: 0.8rem;
   cursor: pointer;
-  font: 700 1.4rem Archivo;
+  font: 700 1.5rem Archivo;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -73,7 +73,7 @@
 }
 
 .teacher-item footer a:hover{
-  background: var(--color-secondary-dark);
+  background: var(--color-text-in-primary);
 }
 
 @media (min-width: 700px){

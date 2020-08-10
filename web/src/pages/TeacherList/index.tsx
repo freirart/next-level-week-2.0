@@ -40,15 +40,21 @@ function TeacherList() {
             options={[
               { value: 'Artes', label: 'Artes' },
               { value: 'Biologia', label: 'Biologia' },
-              { value: 'Química', label: 'Química' },
+              { value: 'Educação Física', label: 'Educação Física' },
+              { value: 'Espanhol', label: 'Espanhol' },
+              { value: 'Filosofia', label: 'Filosofia' },
               { value: 'Física', label: 'Física' },
-              { value: 'Matemática', label: 'Matemática' },
               { value: 'Geografia', label: 'Geografia' },
+              { value: 'História', label: 'História' },
+              { value: 'Inglês', label: 'Inglês' },
               { value: 'Literatura', label: 'Literatura' },
+              { value: 'Matemática', label: 'Matemática' },
               { value: 'Português', label: 'Português' },
+              { value: 'Química', label: 'Química' },
+              { value: 'Sociologia', label: 'Sociologia' },
             ]}
             value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            onChange={(e) => {setSubject(e.target.value)}}
           />
 
           <Select 
@@ -74,11 +80,18 @@ function TeacherList() {
             value={time}
             onChange={(e) => setTime(e.target.value)}
           />
-          <button type="submit">Buscar</button>
+          <button type="submit">
+            <i className="fas fa-search"></i>Buscar
+          </button>
         </form>
       </PageHeader>
 
       <main>
+        {!teachers[0] && (
+          <div className="default-item">
+            <p>Nenhum proffy encontrado com a sua pesquisa.</p>
+          </div>
+        )}
         {teachers.map((teacher: Teacher) => <TeacherItem key={teacher.id} teacher={teacher}/>)}
       </main>
     </div>

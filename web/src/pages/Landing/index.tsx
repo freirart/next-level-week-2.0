@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/images/logo.svg';
-import landingImg from '../../assets/images/landing.svg';
+import landingImg from '../../assets/images/5514.svg';
 
 import studyIcon from '../../assets/images/icons/study.svg';
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg';
@@ -32,7 +32,7 @@ function Landing(){
 
         <div className="logo-container">
       		<img src={logoImg} alt="Proffy" />
-            <h2>Sua plataforma de estudos online.</h2>
+          <h2>Sua plataforma de estudos online.</h2>
         </div>
 
         <img src={landingImg}
@@ -53,7 +53,7 @@ function Landing(){
 				</div>
 
 				<span className="total-connections">
-					Total de { totalConnections } conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo" />
+					<p>Total de { totalConnections } conexões já realizadas <img src={purpleHeartIcon} alt="Coração roxo" /></p>
 				</span>
 
 			</div>
