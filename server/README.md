@@ -5,7 +5,7 @@
 - Rota para listar o total de conexões realizadas;
 - Rota para adicionar uma nova conexão;
 
-# Aulas
+## Aulas
 
 - Rota para criar uma aula;
 - Rota para listar aulas;
