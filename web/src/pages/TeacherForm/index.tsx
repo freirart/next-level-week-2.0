@@ -11,6 +11,7 @@ import api from '../../services/api';
 
 function TeacherForm() {
 
+  let allowSubmit = true;
   const history = useHistory();
 
   const [ name, setName ] = useState('');
@@ -47,20 +48,22 @@ function TeacherForm() {
   function handleCreateClass(e: FormEvent){
     e.preventDefault();
 
-    api.post('classes', {
-      name, 
-      avatar, 
-      whatsapp, 
-      bio,
-      subject, 
-      price: Number(price), 
-      schedule: scheduleItems
-    }).then(() => {
-      alert('Cadastrado com sucesso!');
-      history.push('register-success');
-    }).catch(() => {
-      alert('Erro ao cadastrar!');
-    })
+    if(allowSubmit){
+      allowSubmit = false;
+      api.post('classes', {
+        name, 
+        avatar, 
+        whatsapp, 
+        bio,
+        subject, 
+        price: Number(price), 
+        schedule: scheduleItems
+      }).then(() => {
+        history.push('register-success');
+      }).catch(() => {
+        alert('Erro ao cadastrar!');
+      })
+    }
   }
 
   return (

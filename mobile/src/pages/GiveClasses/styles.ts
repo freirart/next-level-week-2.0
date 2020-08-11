@@ -3,48 +3,73 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8257E5',
-    justifyContent: 'center',
-    padding: 40,
+    backgroundColor: '#E9F3FE',
   },
 
-  content: {
-    flex: 1,
-    justifyContent: 'center',
+  teacherList: {
+    marginTop: -40,
   },
 
-  title: {
-    fontFamily: 'Archivo_700Bold',
-    color: '#FFF',
-    fontSize: 32,
-    lineHeight: 37,
-    maxWidth: 180,
+  searchForm: {
+    marginBottom: 24,
   },
 
-  description: {
-    marginTop: 24,
-    color: '#D4C2FF',
-    fontSize: 16,
-    lineHeight: 26,
-    fontFamily: 'Poppins_400Regular',
-    maxWidth: 240,
+  label: {
+    color: '#52473A',
+    fontFamily:'Poppins_400Regular',
+    marginBottom: -3,
   },
 
-  okButton: {
-    marginVertical: 40,
-    backgroundColor: '#04D361',
-    height: 58,
-    alignItems: 'center',
-    justifyContent: 'center',
+  inputGroup: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+
+  inputBlock: {
+    width: '48%',
+  },
+
+  input: {
+    height: 54,
+    backgroundColor: '#FFF',
     borderRadius: 8,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    marginTop: 4,
+    marginBottom: 16,
   },
 
-  okButtonText: {
+  submitButton: {
+    backgroundColor: '#7F25D9',
+    height: 56,
+    borderRadius: 8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  submitButtonText: {
     color: '#FFF',
-    fontSize: 16,
     fontFamily: 'Archivo_700Bold',
+    fontSize: 16,
   },
 
+  default: {
+    height: 120,
+    width: '100%',
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    marginTop: 30,
+  },
+
+  defaultText: {
+    margin: 5,
+    opacity: 0.7,
+    maxWidth: 400,
+    fontFamily:'Poppins_400Regular',
+    color: '#52473A',
+  }
 });
 
 export default styles;

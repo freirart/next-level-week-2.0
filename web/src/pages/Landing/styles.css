@@ -20,6 +20,7 @@
 }
 
 .logo-container h2{
+  opacity: 0.7;
   font-weight: 500;
   font-size: 2rem;
   line-height: 4.6rem;
@@ -65,7 +66,7 @@
 }
 
 .buttons-container a.give-classes {
-  background: var(--color-text-in-primary);
+  background: var(--color-alternative);
 }
 
 .buttons-container a.study:hover {
@@ -73,11 +74,12 @@
 }
 
 .buttons-container a.give-classes:hover {
-  background: var(--color-text-title);
+  background: var(--color-alternative-dark);
 }
 
 .total-connections {
   font-size: 1.4rem;
+  opacity: 0.7;
   display: flex;
   align-items: center;
   justify-content: center;

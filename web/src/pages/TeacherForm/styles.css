@@ -45,14 +45,14 @@
 #page-teacher-form main fieldset legend button{
   background: none;
   border: 0;
-  color: var(--color-primary-dark);
+  color: var(--color-primary-darker);
   font: 700 1.6rem Archivo;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 #page-teacher-form main fieldset legend button:hover{
-  color: var(--color-primary-darker);
+  color: var(--color-secondary);
 }
 
 #page-teacher-form main fieldset .input-block + .textarea-block,
@@ -84,7 +84,7 @@
 #page-teacher-form main footer button{
   width: 100%;
   height: 5.6rem;
-  background: var(--color-text-title);
+  background: var(--color-alternative);
   color: var(--color-button-text);
   border: 0;
   border-radius: 0.8rem;
@@ -99,7 +99,7 @@
 }
 
 #page-teacher-form main footer button:hover{
-  background: var(--color-text-in-primary);
+  background: var(--color-alternative-dark);
 }
 
 @media (min-width: 700px){

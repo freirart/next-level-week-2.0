@@ -39,13 +39,13 @@
 .success .content button{
   text-align: center;
   margin: 5rem;
-  background: var(--color-secondary);
+  background: var(--color-alternative);
   width: 15rem;
   height: 5.2rem;
   border-radius: 0.8rem;
   font: 700 1.6rem Archivo;
   border: 0;
-  color: #04D361;
+  color: var(--color-button-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,5 +53,5 @@
   cursor: pointer;
 }
 .success .content button:hover{
-  background-color: #24EF7F;
+  background: var(--color-alternative-dark);
 }

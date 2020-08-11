@@ -7,7 +7,12 @@
 }
 
 .input-block label{
+  opacity: 0.7;
   font-size: 1.4rem;
+}
+
+.input-block input:empty {
+  color: rgba(0,0,0,0.7);
 }
 
 .input-block input {
@@ -31,3 +36,4 @@
   right: 1.6rem;
   bottom: 0;
 }
+

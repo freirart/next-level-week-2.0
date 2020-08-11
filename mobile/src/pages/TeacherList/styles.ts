@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F0F0F7',
+    backgroundColor: '#E6E6F0',
   },
 
   teacherList: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    color: '#D4C2FF',
+    color: '#52473A',
     fontFamily:'Poppins_400Regular',
     marginBottom: -3,
   },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    backgroundColor: '#04D361',
+    backgroundColor: '#7F25D9',
     height: 56,
     borderRadius: 8,
     flexDirection: 'row',
@@ -54,6 +54,22 @@ const styles = StyleSheet.create({
     fontFamily: 'Archivo_700Bold',
     fontSize: 16,
   },
+
+  default: {
+    height: 120,
+    width: '100%',
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    marginTop: 30,
+  },
+
+  defaultText: {
+    margin: 5,
+    opacity: 0.7,
+    maxWidth: 400,
+    fontFamily:'Poppins_400Regular',
+    color: '#52473A',
+  }
 });
 
 export default styles;

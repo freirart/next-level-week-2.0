@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Picker, Platform } from 'react-native';
+import { View, Text, Picker, Platform } from 'react-native';
 import { ScrollView, BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -95,7 +95,7 @@ function TeacherList(){
             justifyContent: 'center'
           }}
         >
-          <Feather name="filter" size={20} color="#04D361"/>
+          <Feather name="filter" size={20} color="#F1A34F"/>
         </BorderlessButton>
       )}
       >
@@ -195,6 +195,17 @@ function TeacherList(){
           paddingBottom: 16,
         }}
       >
+        {!teachers[0] && (
+          <View style={styles.default}>
+            <Text style={styles.defaultText}>
+              Nenhum proffy encontrado com a sua pesquisa.
+            </Text>
+            
+            <Text style={styles.defaultText}>
+              Pressione <Feather name="filter" size={20} color="#F1A34F"/> para filtrar.
+            </Text>
+          </View>
+        )}
         {teachers.map((teacher: Teacher) => {
           return (<TeacherItem 
             key={teacher.id} 

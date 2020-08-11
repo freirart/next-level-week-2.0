@@ -81,7 +81,7 @@ function TeacherList() {
             onChange={(e) => setTime(e.target.value)}
           />
           <button type="submit">
-            <i className="fas fa-search"></i>Buscar
+            <i className="fas fa-search"></i>
           </button>
         </form>
       </PageHeader>
