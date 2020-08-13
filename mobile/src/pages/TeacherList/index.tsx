@@ -83,6 +83,12 @@ function TeacherList(){
 
   return (
     <View style={styles.container}>
+      <ScrollView 
+        style={styles.teacherList}
+        contentContainerStyle={{
+          paddingBottom: 16,
+        }}
+      >
       <PageHeader 
       title="Proffys disponíveis"
       headerRight={(
@@ -101,13 +107,12 @@ function TeacherList(){
       >
         { isFilterVisible && (<View style={styles.searchForm}>
           <Text style={styles.label}>Matéria</Text>
-          <View style={{borderRadius: 8, overflow: 'hidden'}}>
+          <View style={{borderRadius: 8, overflow: 'hidden', marginTop: 5}}>
             <Picker
               style={{ 
                 backgroundColor: 'white', 
                 width: '100%', 
                 color: '#C1BCCC',
-                
               }}
               selectedValue={subject}
               onValueChange={(itemValue) => setSubject(itemValue)}
@@ -188,13 +193,6 @@ function TeacherList(){
         </View>)}
       </PageHeader>
 
-      <ScrollView 
-        style={styles.teacherList}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          paddingBottom: 16,
-        }}
-      >
         {!teachers[0] && (
           <View style={styles.default}>
             <Text style={styles.defaultText}>

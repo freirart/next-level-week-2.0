@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   },
 
   topBar: {
+    marginTop: 60,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -16,21 +17,27 @@ const styles = StyleSheet.create({
     fontFamily: 'Archivo_700Bold',
     color: '#FFF',
     fontSize: 24,
-    lineHeight: 32,
+    lineHeight: 29,
     maxWidth: 220,
-    marginTop: 40,
+    marginVertical: 40,
+  },
+
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 
   description: {
-    marginTop: 20,
-    fontFamily: 'Archivo_400Regular',
+    marginTop: -20,
+    marginBottom: 20,
+    fontFamily: 'Poppins_400Regular',
     color: '#52473A',
-    opacity: 0.7,
-    fontSize: 15,
-    lineHeight: 26,
-    maxWidth: 240,
-  }
-
+    opacity: 0.5,
+    fontSize: 14,
+    lineHeight: 24,
+    maxWidth: 260,
+  },
   
 });
 

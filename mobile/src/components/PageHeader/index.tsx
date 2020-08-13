@@ -10,10 +10,11 @@ import styles from './styles';
 
 interface PageHeaderProps{
   title: string;
+  headerRight?: ReactNode;
   description?: string;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, children, description}) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, children, description, headerRight }) => {
 
   const { navigate } = useNavigation();
 
@@ -26,26 +27,33 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, children, description}) 
       <View style={styles.topBar}>
         <BorderlessButton 
           style={{
-             width: 50, 
+            width: 50, 
              height: 50, 
              alignItems: 'center', 
              justifyContent: 'center',
              position: 'absolute',
              left: -20,
              top: -19,
-          }} 
+          }}
           onPress={handleGoBack}
         >
           <Image source={backIcon} resizeMode="contain" />
         </BorderlessButton>
 
-        <Image style={{ position: 'absolute', right: 0, top: 2 }} source={logoImg} resizeMode="contain"/>
+        <Image 
+          style={{ position: 'absolute', right: 0, top: 2 }} 
+          source={logoImg} 
+          resizeMode="contain"
+        />
       </View>
 
-      <View>
+      <View style={styles.header}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
+        {headerRight}
       </View>
+
+      <Text style={styles.description}>{description}</Text>
+
       {children}
     </View>
   );

@@ -30,15 +30,13 @@ function Favorites(){
 
   return (
     <View style={styles.container}>
-      <PageHeader title="Meus proffys Favoritos" />
-
       <ScrollView 
         style={styles.teacherList}
         contentContainerStyle={{
-          paddingHorizontal: 16,
           paddingBottom: 16,
         }}
       >
+        <PageHeader title="Meus proffys Favoritos" />
         {favorites.map((teacher: Teacher) => {
           return (<TeacherItem key={teacher.id} teacher={teacher} favorited />)
         })}
