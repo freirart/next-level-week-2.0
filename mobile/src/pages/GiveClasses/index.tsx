@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Picker, Platform, Image } from 'react-native';
-import { ScrollView, BorderlessButton, RectButton } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-community/async-storage';
+import { View, Text, Picker, Platform, Image } from 'react-native';
+import { ScrollView, RectButton } from 'react-native-gesture-handler';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 import PageHeader from '../../components/PageHeader';
@@ -13,10 +11,14 @@ import warningIcon from '../../assets/images/icons/warning.png';
 import api from '../../services/api';
 
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 function GiveClasses(){
 
-  const [show, setShow] = useState(false);
+  const { navigate } = useNavigation();
+
+  const [showFrom, setShowFrom] = useState(false);
+  const [showTo, setShowTo] = useState(false);
 
   const defaultSubjects = [ 
     "Artes", "Biologia", "Educação Física", "Espanhol", "Filosofia",
@@ -47,8 +49,8 @@ function GiveClasses(){
   const [ price, setPrice ] = useState('');
   const [ subject, setSubject ] = useState('');
   const [ week_day, setWeekDay ] = useState('');
-  const [ from, setFrom ] = useState(['--:--']);
-  const [ to, setTo ] = useState(['--:--']);
+  const [ from, setFrom ] = useState('--:--');
+  const [ to, setTo ] = useState('--:--');
 
   function formatTime(time: Number){
     let formatedTime = String(time);
@@ -59,22 +61,22 @@ function GiveClasses(){
   }
   
   const handleFromChange = (event: Object, selectedDate: Date | undefined) => {
-    setShow(Platform.OS === 'ios');
+    setShowFrom(Platform.OS === 'ios');
     if (selectedDate){
       const formatedHours = formatTime(selectedDate.getHours());
       const formatedMinutes = formatTime(selectedDate.getMinutes());
       const formatedTime = formatedHours + ':' + formatedMinutes;
-      setFrom([...from, formatedTime]);
+      setFrom(formatedTime);
     }
   }
 
   const handleToChange = (event: Object, selectedDate: Date | undefined) => {
-    setShow(Platform.OS === 'ios');
+    setShowTo(Platform.OS === 'ios');
     if (selectedDate){
       const formatedHours = formatTime(selectedDate.getHours());
       const formatedMinutes = formatTime(selectedDate.getMinutes());
       const formatedTime = formatedHours + ':' + formatedMinutes;
-      setTo([...to, formatedTime]);
+      setTo(formatedTime);
     }
   }
 
@@ -100,25 +102,25 @@ function GiveClasses(){
             name="nome"
             label="Nome completo"
             value={name}
-            onChangeValue={(nameValue: string) => setName(nameValue)}
+            onChangeText={(nameValue: string) => setName(nameValue)}
           />
           <Input 
             name="avatar" 
             label="Avatar"
             value={avatar}
-            onChangeValue={(avatarValue: string) => setAvatar(avatarValue)}
+            onChangeText={(avatarValue: string) => setAvatar(avatarValue)}
           />
           <Input 
             name="whatsapp" 
             label="WhatsApp"
             value={whatsapp}
-            onChangeValue={(whatsappValue: string) => setWhatsapp(whatsappValue)}
+            onChangeText={(whatsappValue: string) => setWhatsapp(whatsappValue)}
           />
           <Input 
             name="bio" 
             label="Biografia"
             value={bio}
-            onChangeValue={(bioValue: string) => setName(bioValue)}
+            onChangeText={(bioValue: string) => setBio(bioValue)}
           />
 
           <View style={styles.subtitle}>
@@ -152,7 +154,7 @@ function GiveClasses(){
             name="price" 
             label="Custo da sua hora por aula"
             value={price}
-            onChangeValue={(priceValue: string) => setPrice(priceValue)}
+            onChangeText={(priceValue: string) => setPrice(priceValue)}
           />
 
           <View style={styles.subtitle}>
@@ -191,7 +193,7 @@ function GiveClasses(){
                       <Text style={styles.label}>Das</Text>
                       <RectButton
                         style={styles.input}
-                        onPress={() => setShow(true)}
+                        onPress={() => setShowFrom(true)}
                       >
                         <Text style={{ 
                           color: '#6A6180', 
@@ -201,7 +203,7 @@ function GiveClasses(){
                         </Text>
                       </RectButton>
 
-                      {show && (
+                      {showFrom && (
                         <DateTimePicker
                           testID="dateTimePicker"
                           value={new Date()}
@@ -216,7 +218,7 @@ function GiveClasses(){
                       <Text style={styles.label}>Até</Text>
                       <RectButton
                         style={styles.input}
-                        onPress={() => setShow(true)}
+                        onPress={() => setShowTo(true)}
                       >
                         <Text style={{ 
                           color: '#6A6180', 
@@ -226,12 +228,11 @@ function GiveClasses(){
                         </Text>
                       </RectButton>
 
-                      {show && (
+                      {showTo && (
                         <DateTimePicker
                           testID="dateTimePicker"
                           value={new Date()}
                           mode="time"
-                          display="clock"
                           onChange={handleToChange}
                         />
                       )}
@@ -272,7 +273,10 @@ function GiveClasses(){
             </View>
           </View>
 
-          <RectButton style={styles.submit}>
+          <RectButton 
+            style={styles.submit}
+            onPress={() => navigate('RegisterSuccess')}
+          >
             <Text style={styles.submitText}>Salvar cadastro</Text>
           </RectButton>
         </View>

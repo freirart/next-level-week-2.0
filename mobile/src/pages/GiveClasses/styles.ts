@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 
   footerText: {
     fontFamily: 'Poppins_400Regular',
-    maxWidth: 125,
+    maxWidth: 115,
     color: '#9C98A6',
   },
   

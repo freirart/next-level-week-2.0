@@ -89,128 +89,129 @@ function TeacherList(){
           paddingBottom: 16,
         }}
       >
-      <PageHeader 
-      title="Proffys disponíveis"
-      headerRight={(
-        <BorderlessButton
-          onPress={toggleFilterVisibility}
-          style={{
-            height: 50, 
-            width: 50, 
-            alignItems: 'center', 
-            justifyContent: 'center'
-          }}
+        <PageHeader 
+        title="Proffys disponíveis"
+        headerRight={(
+          <BorderlessButton
+            onPress={toggleFilterVisibility}
+            style={{
+              height: 50, 
+              width: 50, 
+              alignItems: 'center', 
+              justifyContent: 'center'
+            }}
+          >
+            <Feather name="filter" size={20} color="#F1A34F"/>
+          </BorderlessButton>
+        )}
         >
-          <Feather name="filter" size={20} color="#F1A34F"/>
-        </BorderlessButton>
-      )}
-      >
-        { isFilterVisible && (<View style={styles.searchForm}>
-          <Text style={styles.label}>Matéria</Text>
-          <View style={{borderRadius: 8, overflow: 'hidden', marginTop: 5}}>
-            <Picker
-              style={{ 
-                backgroundColor: 'white', 
-                width: '100%', 
-                color: '#C1BCCC',
-              }}
-              selectedValue={subject}
-              onValueChange={(itemValue) => setSubject(itemValue)}
-            >
-              <Picker.Item value="" label="Qual a matéria?" />
-              {defaultSubjects.map((subjectItem, index) => {
-                return (
-                  <Picker.Item 
-                    key={index} 
-                    value={subjectItem} 
-                    label={subjectItem} 
-                  />
-                );
-              })}
-            </Picker>
-          </View> 
+          { isFilterVisible && (<View style={styles.searchForm}>
+            <Text style={styles.label}>Matéria</Text>
+            <View style={{borderRadius: 8, overflow: 'hidden', marginTop: 5}}>
+              <Picker
+                style={{ 
+                  backgroundColor: 'white', 
+                  width: '100%', 
+                  color: '#C1BCCC',
+                }}
+                selectedValue={subject}
+                onValueChange={(itemValue) => setSubject(itemValue)}
+              >
+                <Picker.Item value="" label="Qual a matéria?" />
+                {defaultSubjects.map((subjectItem, index) => {
+                  return (
+                    <Picker.Item 
+                      key={index} 
+                      value={subjectItem} 
+                      label={subjectItem} 
+                    />
+                  );
+                })}
+              </Picker>
+            </View> 
 
-          <View style={styles.inputGroup}>
-            <View style={styles.inputBlock}>
-              <Text style={styles.label}>Dia da semana</Text>
-              <View style={{borderRadius: 8, overflow: 'hidden', marginTop: 5}}>
-                <Picker
-                  prompt="Qual o dia?"
-                  style={{ 
-                    backgroundColor: 'white', 
-                    width: '100%', 
-                    color: '#C1BCCC',
-                    height: 52,
-                  }}
-                  selectedValue={week_day}
-                  onValueChange={dayItem => setWeekDay(dayItem)}
+            <View style={styles.inputGroup}>
+              <View style={styles.inputBlock}>
+                <Text style={styles.label}>Dia da semana</Text>
+                <View style={{borderRadius: 8, overflow: 'hidden', marginTop: 5}}>
+                  <Picker
+                    prompt="Qual o dia?"
+                    style={{ 
+                      backgroundColor: 'white', 
+                      width: '100%', 
+                      color: '#C1BCCC',
+                      height: 52,
+                    }}
+                    selectedValue={week_day}
+                    onValueChange={dayItem => setWeekDay(dayItem)}
+                  >
+                    <Picker.Item value="" label="Qual o dia?"/>
+                    {defaultWeekDays.map((weekDay, index) => {
+                      return (
+                        <Picker.Item 
+                          key={weekDay} 
+                          value={String(index)} 
+                          label={weekDay} 
+                        />
+                      );
+                    })}
+                  </Picker>
+                </View>
+              </View>
+
+              <View style={styles.inputBlock}>
+                <Text style={styles.label}>Horário</Text>
+                <RectButton
+                  style={styles.input}
+                  onPress={() => setShow(true)}
                 >
-                  <Picker.Item value="" label="Qual o dia?"/>
-                  {defaultWeekDays.map((weekDay, index) => {
-                    return (
-                      <Picker.Item 
-                        key={weekDay} 
-                        value={String(index)} 
-                        label={weekDay} 
-                      />
-                    );
-                  })}
-                </Picker>
+                  <Text style={{ 
+                    color: '#C1BCCC', 
+                    fontSize: 15
+                  }}>
+                    {time}
+                  </Text>
+                </RectButton>
+
+                {show && (
+                  <DateTimePicker
+                    testID="dateTimePicker"
+                    value={new Date()}
+                    mode="time"
+                    display="clock"
+                    onChange={handleTimeChange}
+                  />
+                )}
               </View>
             </View>
-
-            <View style={styles.inputBlock}>
-              <Text style={styles.label}>Horário</Text>
-              <RectButton
-                style={styles.input}
-                onPress={() => setShow(true)}
-              >
-                <Text style={{ 
-                  color: '#C1BCCC', 
-                  fontSize: 15
-                }}>
-                  {time}
-                </Text>
-              </RectButton>
-
-              {show && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={new Date()}
-                  mode="time"
-                  display="clock"
-                  onChange={handleTimeChange}
-                />
-              )}
+            <RectButton 
+              style={styles.submitButton}
+              onPress={handleFiltersSubmit}
+            >
+              <Text style={styles.submitButtonText}>Filtrar</Text>
+            </RectButton>
+          </View>)}
+        </PageHeader>
+        <View style={styles.content}>        
+          {!teachers[0] && (
+            <View style={styles.default}>
+              <Text style={styles.defaultText}>
+                Nenhum proffy encontrado com a sua pesquisa.
+              </Text>
+              
+              <Text style={styles.defaultText}>
+                Pressione <Feather name="filter" size={20} color="#F1A34F"/> para filtrar.
+              </Text>
             </View>
-          </View>
-          <RectButton 
-            style={styles.submitButton}
-            onPress={handleFiltersSubmit}
-          >
-            <Text style={styles.submitButtonText}>Filtrar</Text>
-          </RectButton>
-        </View>)}
-      </PageHeader>
-
-        {!teachers[0] && (
-          <View style={styles.default}>
-            <Text style={styles.defaultText}>
-              Nenhum proffy encontrado com a sua pesquisa.
-            </Text>
-            
-            <Text style={styles.defaultText}>
-              Pressione <Feather name="filter" size={20} color="#F1A34F"/> para filtrar.
-            </Text>
-          </View>
-        )}
-        {teachers.map((teacher: Teacher) => {
-          return (<TeacherItem 
-            key={teacher.id} 
-            teacher={teacher}
-            favorited={favorites.includes(teacher.id)}
-          />);
-        })}
+          )}
+          {teachers.map((teacher: Teacher) => {
+            return (<TeacherItem 
+              key={teacher.id} 
+              teacher={teacher}
+              favorited={favorites.includes(teacher.id)}
+            />);
+          })}
+        </View>
       </ScrollView>
     </View>
   );

@@ -9,6 +9,12 @@ const styles = StyleSheet.create({
   teacherList: {
     marginTop: -40,
   },
+  
+  content: {
+    marginTop: -40,
+    marginHorizontal: 20,
+    borderRadius: 8,
+  },
 });
 
 export default styles;

@@ -37,9 +37,11 @@ function Favorites(){
         }}
       >
         <PageHeader title="Meus proffys Favoritos" />
-        {favorites.map((teacher: Teacher) => {
-          return (<TeacherItem key={teacher.id} teacher={teacher} favorited />)
-        })}
+        <View style={styles.content}>
+          {favorites.map((teacher: Teacher) => {
+            return (<TeacherItem key={teacher.id} teacher={teacher} favorited />)
+          })}
+        </View>
       </ScrollView>
     </View>
   );

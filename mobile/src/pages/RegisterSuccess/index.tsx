@@ -1,35 +1,38 @@
 import React from 'react';
-import { View, ImageBackground, Text } from 'react-native';
+import { View, ImageBackground, Text, Image } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-import giveClassesBgImage from '../../assets/images/give-classes-background.png'
+import successBg from '../../assets/images/success-page.png'
+import successIcon from '../../assets/images/icons/success-check-icon.png';
 
 import styles from './styles';
 
 function RegisterSuccess(){
 
-  const { goBack } = useNavigation();
+  const { navigate } = useNavigation();
 
   return (
     <View style={styles.container}>
       
      <ImageBackground 
      resizeMode="contain" 
-     source={giveClassesBgImage} 
+     source={successBg} 
      style={styles.content}
     >
-      <Text style={styles.title}>Quer ser um Proffy?</Text>
+      <Image source={successIcon} />
+      <Text style={styles.title}>Cadastro Salvo!</Text>
       <Text style={styles.description}>
-        Para começar, você precisa se cadastrar na nossa plataforma web.
+        Tudo certo, seu cadastro está na nossa lista de professores.
+        Agora é só ficar de olho no seu WhatsApp.
       </Text>
      </ImageBackground>
 
      <RectButton 
       style={styles.okButton}
-      onPress={goBack}
+      onPress={() => navigate('Study')}
      >
-       <Text style={styles.okButtonText}>Tudo bem</Text>
+       <Text style={styles.okButtonText}>Acessar lista</Text>
      </RectButton>
 
     </View>

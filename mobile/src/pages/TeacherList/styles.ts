@@ -69,7 +69,13 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     fontFamily:'Poppins_400Regular',
     color: '#52473A',
-  }
+  },
+
+  content: {
+    marginTop: -24,
+    marginHorizontal: 20,
+    borderRadius: 8,
+  },
 });
 
 export default styles;
